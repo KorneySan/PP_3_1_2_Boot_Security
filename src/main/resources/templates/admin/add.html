@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Пользователь</title>
+</head>
+
+<body>
+<form action="#" method="POST" th:action="@{/admin}" th:object="${user}">
+<h1>Добавление пользователя</h1>
+<table border="1">
+    <tr>
+        <td><label for="firstName">Имя:</label></td>
+        <td><input id="firstName" type="text" th:field="${user.firstName}"></td>
+    </tr>
+    <tr>
+        <td><label for="lastName">Фамилия:</label></td>
+        <td><input id="lastName" type="text" th:field="${user.lastName}"></td>
+    </tr>
+    <tr>
+        <td><label for="email">Почта:</label></td>
+        <td><input id="email" type="email" th:field="${user.email}"></td>
+    </tr>
+    <tr>
+        <td><label for="username">Логин:</label></td>
+        <td><input type="text" name="user_name" th:field="${user.username}"/></td>
+    </tr>
+    <tr>
+        <td><label for="password">Пароль:</label></td>
+        <td><input type="text" name="password" th:field="${user.password}"/></td>
+    </tr>
+    <tr>
+        <td><label for="role">Роль(и):</label></td>
+        <td><select multiple size="2" name="select_role" class="form-control" id="exampleFormControlSelect3">
+            <option th:each="role : ${role}" th:value="${role.getAuthority()}"
+                    th:text="${role.getAuthority() == 'ROLE_ADMIN'} ? 'ADMIN' : 'USER'">
+            </option>
+        </select></td>
+    </tr>
+</table>
+    <input type="submit" th:value="Добавить">
+    <input type="reset" value="Сброс">
+    <button type="submit" th:formmethod="get" th:formaction="@{/admin}">Отмена</button>
+</form>
+<form th:method="GET" th:action="@{/logout}">
+    <input type="submit" value="Выйти из учётной записи">
+</form>
+</body>
+</html>

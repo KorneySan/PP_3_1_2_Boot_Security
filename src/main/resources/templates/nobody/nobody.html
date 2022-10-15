@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Пользователь</title>
+</head>
+<body>
+<h1>Неправомочный пользователь</h1>
+<p align="justify">Вы зарегистрированы в системе, но Вам не назначены права доступа. Обратитесь к администратору системы для решения этого вопроса.</p>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Выйти из аккаунта" />
+</form>
+</body>
+</html>
